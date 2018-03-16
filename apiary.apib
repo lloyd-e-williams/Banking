@@ -109,6 +109,50 @@ The Oracle Integration Cloud also shows the [metadata](https://oicdev-williams.u
             }
         ]
 
+## Get Activities By Account ID [/LW_MAP_ACCOUNT_ACTIVITI/1.0/activities/{accountID}]
+
+### Get Activities for an Account [GET]
+
+This gets all the banking activity for the provided bacnk account id. 
+dded ** TODO fix the response **
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic bGxveWQuZS53aWxsaWFtc0BvcmFjbGUuY29tOkRjbUlBa2xqOSM=
+
++ Response 200 (application/json)
+
+        [
+            {  
+                "accountID": "C2001",
+                "accounts": 
+                [
+                    {
+                        "accountID": "ACCOUNT208",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:16:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT209",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 2300,
+                        "lastActivityDate": "2018-02-27T17:17:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT303",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:50:09.000-05:00"
+                    }
+                ]
+            }
+        ]
+
 
 ## Open Account [/LW_OPEN_ACCOUNT/1.0/account]
 
@@ -133,9 +177,45 @@ object containing the bank account and first deposit information and returns the
                 }
            
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
+       
+       + Attributes (Status Results)
+        
+## Perform Account Activity [/LW_PERFORM_ACCT_ACTIVITY/1.0/doaccountactivity]       
 
-        {
-            "statusCode": 0,
-            "errorReason": "OK"
-        }
+### Perform Account Activity [POST]
+
+This API performs account activities like deposit and withdrawal
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic bGxveWQuZS53aWxsaWFtc0BvcmFjbGUuY29tOkRjbUlBa2xqOSM=
+
+    + Body
+        
+                {    
+                    "accountID": "ACCOUNT107",
+                    "transactionType": "D",
+                    "amount": 431.75
+                }
+       
+
++ Response 200 (application/json)
+       
+                {
+                    "statusCode": 0,
+                    "errorReason": "OK"
+                }
+
+
+# Data Structures
+
+## Status Results (object)
++ statusCode: 0 (number)
+
+    A number to represent the code for the result.
+
++ errorReason: OK (string) 
+    
+    A string to describe the result
