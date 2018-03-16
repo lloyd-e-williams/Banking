@@ -1,0 +1,133 @@
+FORMAT: 1A
+HOST: https://OICDEV-williams.uscom-central-1.oraclecloud.com:443/ic/api/integration/v1/flows/rest
+
+
+# Banking API
+
+This is a simple Banking API to perform banking transactions that are implemented using Oracle Integration Cloud
+
+
+## Account List By Bank Code [/LW_MAP_ACCOUN_BY_BANK/1.0/accounts/{ABC}]
+
+### List All Accounts By Bank Code [GET]
+The Oracle Integration Cloud also shows the [metadata](https://oicdev-williams.uscom-central-1.oraclecloud.com/ic/api/integration/v1/flows/rest/LW_MAP_ACCOUN_BY_BANK/1.0/metadata) for this API.
+
++ Request
+    + Headers
+
+            Authorization: Basic bGxveWQuZS53aWxsaWFtc0BvcmFjbGUuY29tOkRjbUlBa2xqOSM=
+
+
++ Response 200 (application/json)
+
+        [ 
+            {
+                "bankCode": "ABC",
+                "accounts": [
+                    {
+                        "accountID": "ACCOUNT207",
+                        "customerID": "C2000",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:12:46.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT208",
+                        "customerID": "C2001",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:16:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT209",
+                        "customerID": "C2001",
+                        "acctType": "Checking",
+                        "balance": 2300,
+                        "lastActivityDate": "2018-02-27T17:17:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT303",
+                        "customerID": "C2001",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:50:09.000-05:00"
+                    }
+                ]
+            }
+        ]
+
+## Customer Accounts [/LW_MAP_ACCTS_CUSTOMER/1.0/accounts/C2001] 
+
+### Get the Accounts for a Customer [GET]
+
+This gets all the accounts that belong to a specific customer id. 
+The Oracle Integration Cloud also shows the [metadata](https://oicdev-williams.uscom-central-1.oraclecloud.com/ic/api/integration/v1/flows/rest/LW_MAP_ACCTS_CUSTOMER/1.0/metadata) for this API.
+
++ Request
+    + Headers
+
+            Authorization: Basic bGxveWQuZS53aWxsaWFtc0BvcmFjbGUuY29tOkRjbUlBa2xqOSM=
+
+
++ Response 200 (application/json)
+        
+        [
+            {  
+                "customerID": "C2001",
+                "accounts": 
+                [
+                    {
+                        "accountID": "ACCOUNT208",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:16:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT209",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 2300,
+                        "lastActivityDate": "2018-02-27T17:17:16.000-05:00"
+                    },
+                    {
+                        "accountID": "ACCOUNT303",
+                        "bankCode": "ABC",
+                        "acctType": "Checking",
+                        "balance": 500,
+                        "lastActivityDate": "2018-02-07T17:50:09.000-05:00"
+                    }
+                ]
+            }
+        ]
+
+
+## Open Account [/LW_OPEN_ACCOUNT/1.0/account]
+
+### Open a New Bank Account [POST]
+
+You may create a bank account using this action. It takes a JSON
+object containing the bank account and first deposit information and returns the status of the account creation request.
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic bGxveWQuZS53aWxsaWFtc0BvcmFjbGUuY29tOkRjbUlBa2xqOSM=
+
+    + Body
+        
+                {
+                  "accountID": "ACCOUNT3500",
+                  "bankCode": "ABC",
+                  "customerID": "3",
+                  "acctType": "Chequing",
+                  "balance": 700.00
+                }
+           
+
++ Response 201 (application/json)
+
+        {
+            "statusCode": 0,
+            "errorReason": "OK"
+        }
