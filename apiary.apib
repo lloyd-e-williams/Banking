@@ -113,7 +113,7 @@ The Oracle Integration Cloud also shows the [metadata](https://oicdev-williams.u
 
 + Parameters
 
-    + AccountID: ACCOUNT208 (string) - The account id used to retreive activities
+    + AccountID: ACCOUNT8fix01 (string) - The account id used to retreive activities
 
 ### Get Activities for an Account [GET]
 
@@ -127,17 +127,22 @@ This gets all the banking activity for the provided bank account id.
 + Response 200 (application/json)
 
         {
-        "accountID": "ACCOUNT301",
-        "activities": [
-            {
-                "activityID": "2d353633383538353537303431383338",
-                "transactionType": "D",
-                "amount": 1700,
-                "activityDate": "2018-03-16T18:48:35.000-04:00"
-            }
+            "accountID": "ACCOUNT801",
+            "activities": [
+                {
+                    "activityID": "2d383038303633343931343138353138",
+                    "transactionType": "D",
+                    "amount": 700,
+                    "activityDate": "2018-03-25T16:41:17.000-04:00"
+                },
+                {
+                    "activityID": "2d323537333438313435363238343331",
+                    "transactionType": "W",
+                    "amount": 100.16,
+                    "activityDate": "2018-03-25T16:47:27.000-04:00"
+                }
             ]
-        }   
-
+        }
 
 
 ## Open Account [/LW_OPEN_ACCOUNT/1.0/account]
