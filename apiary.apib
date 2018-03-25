@@ -117,8 +117,7 @@ The Oracle Integration Cloud also shows the [metadata](https://oicdev-williams.u
 
 ### Get Activities for an Account [GET]
 
-This gets all the banking activity for the provided bacnk account id. 
-dded ** TODO fix the response **
+This gets all the banking activity for the provided bank account id. 
 
 + Request (application/json)
     + Headers
@@ -127,35 +126,18 @@ dded ** TODO fix the response **
 
 + Response 200 (application/json)
 
-        [
-            {  
-                "accountID": "C2001",
-                "accounts": 
-                [
-                    {
-                        "accountID": "ACCOUNT208",
-                        "bankCode": "ABC",
-                        "acctType": "Checking",
-                        "balance": 500,
-                        "lastActivityDate": "2018-02-07T17:16:16.000-05:00"
-                    },
-                    {
-                        "accountID": "ACCOUNT209",
-                        "bankCode": "ABC",
-                        "acctType": "Checking",
-                        "balance": 2300,
-                        "lastActivityDate": "2018-02-27T17:17:16.000-05:00"
-                    },
-                    {
-                        "accountID": "ACCOUNT303",
-                        "bankCode": "ABC",
-                        "acctType": "Checking",
-                        "balance": 500,
-                        "lastActivityDate": "2018-02-07T17:50:09.000-05:00"
-                    }
-                ]
+        {
+        "accountID": "ACCOUNT301",
+        "activities": [
+            {
+                "activityID": "2d353633383538353537303431383338",
+                "transactionType": "D",
+                "amount": 1700,
+                "activityDate": "2018-03-16T18:48:35.000-04:00"
             }
-        ]
+            ]
+        }   
+
 
 
 ## Open Account [/LW_OPEN_ACCOUNT/1.0/account]
